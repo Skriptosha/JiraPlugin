@@ -1,0 +1,54 @@
+<html lang="ru">
+<head>
+    <title>Отчеты</title>
+    $webResourceManager.requireResourcesForContext("simpleReportJiraPlugin")
+</head>
+<body>
+<script type="text/javascript">
+        #if (!$authcontext.loggedInUser.name)
+        document.location.href = contextPath + "/login.jsp?os_destination=" + "/secure/JiraReports.jspa"
+        #end
+</script>
+<!-- контейнер для сообщений -->
+<div id="aui-message-bar"></div>
+
+<!-- контейнер с шапкой -->
+<div class="generalAdminHeading aui-page-header">
+    <div class="aui-page-header-main project-details">
+        <h1>Отчеты</h1>
+    </div>
+</div>
+
+<!-- контейнер с телом -->
+<div class="aui-page-panel">
+    <div class="aui-page-panel-inner">
+        <div class="aui-page-panel-nav">
+            <!-- Меню -->
+            <div id="aui-vnav-example" class="aui-flatpack-example">
+                <nav class="aui-navgroup aui-navgroup-vertical">
+                    <div class="aui-navgroup-inner" id="reports-menu-body">
+                        <div class="aui-nav-heading"><strong>Отчеты</strong></div>
+                        <ul class="aui-nav" id="reports-menu-class">
+                            <script type="text/javascript">
+                                    #set($user = $authcontext.loggedInUser.name);
+                                addSimpleReports('$user');
+                            </script>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Панель вывода -->
+        <section class="aui-page-panel-content" style="width: 70%; float: left;">
+            <div id="reports-content-body"></div>
+        </section>
+
+        <aside class="aui-page-panel-sidebar">
+            <!-- tangental content here -->
+        </aside>
+    </div>
+</div>
+
+</body>
+</html>

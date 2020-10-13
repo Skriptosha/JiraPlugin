@@ -1,0 +1,111 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+
+    <rest key="user-rest-resource" path="/newRest" version="1.0">
+        <description>Provides REST plugin service</description>
+    </rest>
+
+    <!-- add our web resources -->
+    <web-resource key="simpleReportJiraPlugin-resources" name="simpleReportJiraPlugin Web Resources">
+        <!--<<resource type="download" name="simpleReportJiraPlugin.css" location="/css/simpleReportJiraPlugin.css"/>-->
+        <!--<resource type="download" name="simpleReportJiraPlugin.js" location="/js/simpleReportJiraPlugin.js"/>-->
+        <!--<resource type="download" name="aui-prototyping.css" location="/aui/aui-prototyping.css"/>-->
+        <!--<resource type="download" name="aui-prototyping.js" location="/aui/aui-prototyping.js"/>-->
+        <resource type="download" name="images/" location="/images"/>
+        <resource type="download" name="fonts/" location="/fonts"/>-->
+        <dependency>com.atlassian.auiplugin:aui-dropdown2</dependency>
+        <dependency>com.atlassian.auiplugin:aui-header</dependency>
+        <dependency>com.atlassian.auiplugin:aui-keyboard-shortcuts</dependency>
+        <dependency>com.atlassian.auiplugin:aui-message</dependency>
+        <dependency>com.atlassian.auiplugin:aui-navigation</dependency>
+        <dependency>com.atlassian.auiplugin:aui-page-header</dependency>
+        <dependency>com.atlassian.auiplugin:aui-table</dependency>
+        <dependency>com.atlassian.auiplugin:aui-tabs</dependency>
+        <dependency>com.atlassian.auiplugin:cookie</dependency>
+        <dependency>com.atlassian.auiplugin:dialog</dependency>
+        <dependency>com.atlassian.auiplugin:fancy-file-input</dependency>
+        <dependency>com.atlassian.auiplugin:inline-dialog</dependency>
+        <dependency>com.atlassian.auiplugin:template</dependency>
+        <dependency>com.atlassian.auiplugin:toolbar</dependency>
+        <dependency>com.atlassian.auiplugin:jquery-ui-data</dependency>
+        <dependency>com.atlassian.auiplugin:jquery-ui-draggable</dependency>
+        <dependency>com.atlassian.auiplugin:jquery-ui-focusable</dependency>
+        <dependency>com.atlassian.auiplugin:jquery-ui-keycode</dependency>
+        <dependency>com.atlassian.auiplugin:jquery-ui-plugin</dependency>
+        <dependency>com.atlassian.auiplugin:jquery-ui-scroll-parent</dependency>
+        <dependency>com.atlassian.auiplugin:jquery-ui-sortable</dependency>
+        <dependency>com.atlassian.auiplugin:jquery-ui-widget</dependency>
+        <dependency>com.atlassian.auiplugin:jquery-ui-unique-id</dependency>
+        <dependency>com.atlassian.auiplugin:aui-reset</dependency>
+        <dependency>com.atlassian.auiplugin:aui-page-typography</dependency>
+        <dependency>com.atlassian.auiplugin:aui-page-layout</dependency>
+        <dependency>com.atlassian.auiplugin:aui-link</dependency>
+        <dependency>com.atlassian.auiplugin:aui-group</dependency>
+        <dependency>com.atlassian.auiplugin:aui-core</dependency>
+        <dependency>com.atlassian.auiplugin:aui-icon</dependency>
+        <dependency>com.atlassian.auiplugin:aui-iconography</dependency>
+        <dependency>com.atlassian.auiplugin:aui-avatar</dependency>
+        <dependency>com.atlassian.auiplugin:aui-event-bus</dependency>
+        <dependency>com.atlassian.auiplugin:aui-forms</dependency>
+        <dependency>com.atlassian.auiplugin:aui-toolbar2</dependency>
+        <dependency>com.atlassian.auiplugin:aui-core</dependency>
+        <dependency>com.atlassian.auiplugin:aui-icon</dependency>
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <dependency>com.atlassian.auiplugin:aui-select2</dependency>
+        <dependency>com.atlassian.auiplugin:aui-messages</dependency>
+        <dependency>com.atlassian.auiplugin:aui-buttons</dependency>
+        <dependency>com.atlassian.auiplugin:aui-page-layout</dependency>
+        <dependency>com.atlassian.auiplugin:aui-navigation</dependency>
+        <dependency>com.atlassian.auiplugin:aui-label</dependency>
+        <dependency>com.atlassian.auiplugin:aui-labels</dependency>
+        <dependency>com.atlassian.auiplugin:aui-spinner</dependency>
+        <dependency>com.atlassian.auiplugin:aui-date-picker</dependency>
+        <dependency>com.atlassian.auiplugin:fancy-file-input</dependency>
+        <!--<dependency>com.atlassian.plugins.atlassian-plugins-webresource-plugin:format</dependency>-->
+        <!--<dependency>com.atlassian.jira.jira-project-config-plugin:project-config-global</dependency-->
+        <!-- add our i18n resource -->
+        <resource type="i18n" name="i18n" location="simpleReportJiraPlugin"/>
+        <resource type="download" name="reportsMain.js" location="/reports/reportsMain.js"/>
+        <resource type="download" name="simpleReports.js" location="/reports/simpleReports.js"/>
+        <resource type="download" name="userCode.js" location="/reports/userCode.js"/>
+        <resource type="download" name="simpleReportsFunction.js"
+                  location="/reports/simpleReportsFunction.js"/>
+        <resource type="download" name="dateCalendar.js" location="/reports/dateCalendar.js"/>
+        <resource type="download" name="additionalFunction.js"
+                  location="/reports/additionalFunction.js"/>
+        <context>simpleReportJiraPlugin</context>
+    </web-resource>
+
+    <!--*************************** Новый пункт меню для отчетов*************************************-->
+    <!-- раздел верхнего уровня для пунктов меню и ссылок  -->
+    <web-section key="rshbLinks" name="RSHB Links" location="rshbMenu" weight="10"/>
+    <!-- ссылка для верхнего уровня (для пункта меню\выпадающего списка) -->
+    <web-item key="rshbMenu" name="Intech" section="system.top.navigation.bar" weight="200">
+        <label>Интех</label>
+        <link linkId="rshbMenu">http://sgo-ap169.go.rshbank.ru:8081/</link>
+        <condition class="com.atlassian.jira.plugin.webfragment.conditions.UserLoggedInCondition"/>
+    </web-item>
+
+    <web-item key="intech-reports" name="New Reports" section="rshbMenu/rshbLinks"
+              weight="10">
+        <label>Новые отчеты</label>
+        <link linkId="rshbMenu">/secure/JiraReports.jspa</link>
+        <condition class="com.atlassian.jira.plugin.webfragment.conditions.UserLoggedInCondition"/>
+    </web-item>
+
+    <webwork1 key="reports-action1" name="New Reports Action">
+        <description key="reports-action.description">Новые отчеты</description>
+        <actions>
+            <action name="ru.rshbintech.jira.report.webwork.JiraReports" alias="JiraReports">
+                <view name="reports-action-success">/reports/reports-action-success.vm</view>
+            </action>
+            <action name="ru.rshbintech.jira.report.webwork.SimpleReportsActionN" alias="SimpleReportsActionN"/>
+        </actions>
+    </webwork1>
+</atlassian-plugin>
